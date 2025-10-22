@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  springboot-app:
+    image: springio/gs-spring-boot-docker:latest
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
