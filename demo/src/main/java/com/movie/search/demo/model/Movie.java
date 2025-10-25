@@ -2,13 +2,11 @@ package com.movie.search.demo.model;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
 
-    @Id
     private String id;
     private String title;
     private int year;

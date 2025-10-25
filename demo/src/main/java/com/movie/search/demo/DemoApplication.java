@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
+@RestController // Generally I would not make the main class to be a RestController but for
+                // demoing purposes this makes it easier to verify installation steps
 public class DemoApplication {
 
     public static void main(String[] args) {
