@@ -36,12 +36,18 @@ export class MovieSearchComponent {
     if (formGroupValue.genre) queryParts.push(`genre=${encodeURIComponent(formGroupValue.genre)}`);
     this.query = queryParts.join('&');
     if (!this.query) { 
+      this.movies = [];
+      this.loading = false;
       return; 
     }
 
     try {
       const data = await firstValueFrom(this.movieService.searchMovies(this.query));
       console.log('Movies fetched:', data);
+      /**
+       * @remarks
+       * Note there is a max number of records set to 25 in the backend for demoing purposes but generaly a large dataset table would use pagination or lazy loading
+       */
       this.movies = data;
     } catch (error) {
       alert('Error fetching movies');

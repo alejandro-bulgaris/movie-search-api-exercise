@@ -8,3 +8,36 @@
   <p>Click to search</p>
   <button type="submit" >Search</button>
 </form>
+
+<hr />
+
+@if (loading) {
+  <p>Loading movies...</p>
+} @else if (movies && movies.length > 0) {
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Genres</th>
+        <th>Cast</th>
+        <th>Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (movie of movies; track movie.title) {
+        <tr>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.year }}</td>
+          <td>{{ movie.genres?.join(', ') }}</td>
+          <td>{{ movie.cast?.join(', ') }}</td>
+          <td>
+            <img [src]="movie.thumbnail" [alt]="movie.title" width="80" />
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <p>No movies found.</p>
+}

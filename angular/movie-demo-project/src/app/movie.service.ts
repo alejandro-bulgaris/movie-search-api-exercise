@@ -8,6 +8,12 @@ export interface Movie {
   year: number;
   genre?: string;
   cast?: string[];
+  genres?: string[];
+  href?: string;
+  extract?: string;
+  thumbnail?: string;
+  thumbnail_width?: number;
+  thumbnail_height?: number;
 }
 
 @Injectable({
@@ -22,13 +28,10 @@ export class MovieService {
   searchMovies(query: string): Observable<Movie[]> {
 
     const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa('msadmin:StrongSecret123')
+      'content-type': 'application/json'
     });
 
     return this.http.get<Movie[]>(`${this.apiUrl}?${query}`, { headers });
   }
 
-  searchTest(): Observable<{ message: string }> {
-    return this.http.get<{ message: string }>('http://localhost:8080');
-  }
 }
