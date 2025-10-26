@@ -1,0 +1,62 @@
+{
+  "name": "MovieSearchDemo",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "search",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:8080/api/movies/file/search?title=Arr&year=1996&genre=Drama",
+        "method": "GET",
+        "headers": [],
+        "params": [
+          {
+            "name": "title",
+            "value": "Arr",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "year",
+            "value": "1996",
+            "type": "query",
+            "enabled": true
+          },
+          {
+            "name": "genre",
+            "value": "Drama",
+            "type": "query",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "auth": {
+          "mode": "basic",
+          "basic": {
+            "username": "msadmin",
+            "password": "StrongSecret123"
+          }
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "MovieSearchDemo",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
