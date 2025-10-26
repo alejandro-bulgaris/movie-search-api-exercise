@@ -1,4 +1,15 @@
-# Movie Search REST API Exercise 
+# Movie Search REST API Exercise
+
+## System requirements for REST API and front-end UI
+- Linux Ubuntu OS. Any of the below should work:
+  - Windows Subsystem for Linux version 2 `WSL 2` is the recommended approach that is a lightweight virtualized Linux environment that is using Hyper-V under the hood
+  - Other virtual machines like `VMware`, `VirtualBox` or `Vagrant` with Linux ubuntu OS
+  - Laptop with Linux ubuntu OS
+- [Java 17](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK 17](https://openjdk.org/projects/jdk/17/) or later
+- [Docker](https://www.docker.com/)
+- [Nodejs](https://nodejs.org/en)
+- [Angular CLI](https://angular.dev/tools/cli)
+
 
 ## Install and Run Spring Boot Project on Windows
 
@@ -194,7 +205,8 @@ npm -v
 
 ### Install latest Angular CLI and run Angular app
 ```
-cd movie-search-api-exercise/angular
+cd movie-search-api-exercise/angular/movie-demo-project
+npm install
 npm install -g @angular/cli
 ng serve
 ```
