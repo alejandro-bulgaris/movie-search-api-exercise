@@ -1,5 +1,7 @@
 package com.movie.search.demo;
 
+import java.util.Map;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +17,8 @@ public class DemoApplication {
     }
 
     @RequestMapping("/")
-    public String home() {
-        return "Hello Docker World";
+    public Map<String, String> home() {
+        return Map.of("message", "Hello Docker World");
     }
 
 }

@@ -1,12 +1,11 @@
-version: "3.9"
-
 services:
   springboot-app:
     image: springio/gs-spring-boot-docker:latest
     container_name: springboot-app
     environment:
     - APP_USER=msadmin
-    - APP_PASSWORD=StrongSecret123 #Should be changed/injected on deployment or at run time
+    - APP_PASSWORD=StrongSecret123 # Placeholde password. The real password should not be commited into github 
+                                   # and generally should be changed/injected on deployment or at run time
     ports:
       - "8080:8080"
     restart: unless-stopped
