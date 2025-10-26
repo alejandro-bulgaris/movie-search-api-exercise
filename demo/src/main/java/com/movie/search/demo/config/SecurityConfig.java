@@ -19,7 +19,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll());
 
-        http.httpBasic(withDefaults()); // replaces deprecated httpBasic()
+        http.httpBasic(withDefaults());
 
         return http.build();
     }

@@ -12,8 +12,19 @@ import java.util.stream.Collectors;
 @Service
 public class MovieFileService {
 
+    /**
+     * @implNote Spring Boot services and controllers are singletons and
+     *           ObjectMapper is thread-safe therefore for a demo making it static
+     *           seems not required but just noting as something that deserves more
+     *           consideration for a production ready application and likewise the
+     *           idea of caching the movie data in memory it's just an example to
+     *           demonstrate a simple strategy to improve the api performace but
+     *           also deserves more considerantion for a production ready
+     *           application
+     */
     private final ObjectMapper objectMapper = new ObjectMapper();
     private List<Movie> cachedMovies;
+    private static final int MAX_RESULTS = 25; // Limit max results returned for demoing purposes
 
     private void loadMoviesIfNeeded() throws IOException {
         if (cachedMovies == null) {
@@ -24,34 +35,29 @@ public class MovieFileService {
         }
     }
 
-    public List<Movie> getMovies() throws IOException {
-        loadMoviesIfNeeded();
-        return cachedMovies;
-    }
+    public List<Movie> searchMovies(String title, Integer year, String genre) throws IOException {
 
-    public List<Movie> searchByTitle(String title, Integer year, String genre) throws IOException {
-
-        // Step 1: Load movies once
+        // Load movies once
         loadMoviesIfNeeded();
 
-        // Step 2: Prepare lowercase title search if provided
+        // Prepare lowercase title search if provided
         String lowerTitle = title != null ? title.toLowerCase() : null;
 
-        // Step 3: Prepare lowercase genre search if provided
+        // Prepare lowercase genre search if provided
         String lowerGenre = genre != null ? genre.toLowerCase() : null;
 
-        // Step 4: Stream the cached movies
+        // Stream the cached movies
         return cachedMovies.stream()
-                // Step 4a: Filter by title if provided
+                // Filter by title if provided
                 .filter(movie -> {
                     if (lowerTitle == null) {
                         return true;
                     }
                     return movie.getTitle() != null && movie.getTitle().toLowerCase().contains(lowerTitle);
                 })
-                // Step 4b: Filter by year if provided
+                // Filter by year if provided
                 .filter(movie -> year == null || movie.getYear() == year)
-                // Step 4c: Filter by genre if provided
+                // Filter by genre if provided
                 .filter(movie -> {
                     if (lowerGenre == null) {
                         return true;
@@ -65,7 +71,8 @@ public class MovieFileService {
 
                     return matchesSingleGenre || matchesGenreList;
                 })
-                // Step 5: Collect results
+                .limit(MAX_RESULTS)
+                // Collect results
                 .collect(Collectors.toList());
     }
 

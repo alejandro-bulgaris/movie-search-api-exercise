@@ -12,7 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Controller without authentication to demonstrate angular single page app
+ * @implNote Controller without authentication to demonstrate angular single
+ *           page app
  */
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // Allow Angular app to search movies
@@ -30,7 +31,7 @@ public class MovieBackendController {
             @RequestParam(required = false) String title,
             @RequestParam(required = false) Integer year,
             @RequestParam(required = false) String genre) throws IOException {
-        return movieFileService.searchByTitle(title, year, genre);
+        return movieFileService.searchMovies(title, year, genre);
     }
 
 }
