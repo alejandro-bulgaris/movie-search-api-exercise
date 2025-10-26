@@ -7,13 +7,19 @@
       "name": "search",
       "seq": 2,
       "request": {
-        "url": "http://localhost:8080/api/movies/file/search?title=Arr&year=1996&genre=Drama",
+        "url": "http://localhost:8080/api/movies/file/search?title=Arrival&year=1996",
         "method": "GET",
-        "headers": [],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
         "params": [
           {
             "name": "title",
-            "value": "Arr",
+            "value": "Arrival",
             "type": "query",
             "enabled": true
           },
@@ -27,7 +33,7 @@
             "name": "genre",
             "value": "Drama",
             "type": "query",
-            "enabled": true
+            "enabled": false
           }
         ],
         "body": {

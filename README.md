@@ -1,8 +1,8 @@
 # Movie Search REST API Exercise
 
 ## System requirements for REST API and front-end UI
-- Linux Ubuntu OS. Any of the below should work:
-  - Windows Subsystem for Linux version 2 `WSL 2` is the recommended approach that is a lightweight virtualized Linux environment that is using Hyper-V under the hood
+- Linux Ubuntu OS (20 LTS or later). Any of the below should work:
+  - Windows Subsystem for Linux version 2 `WSL 2` is the recommended approach that is a lightweight virtualized Linux environment that is using Hyper-V under the hood. 
   - Other virtual machines like `VMware`, `VirtualBox` or `Vagrant` with Linux ubuntu OS
   - Laptop with Linux ubuntu OS
 - [Java 17](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK 17](https://openjdk.org/projects/jdk/17/) or later
@@ -11,7 +11,7 @@
 - [Angular CLI](https://angular.dev/tools/cli)
 
 
-## Install and Run Spring Boot Project on Windows
+## Install and Run Spring Boot (Version 3.5.6) Project on Windows
 
 ### Install Windows Subsystem Linux (WSL 2)
 
@@ -130,6 +130,20 @@ http://localhost:8080
 - If using Postman or Bruno set Basic Auth with user and password set in `compose.yaml` file 
 - Example request:
 ```
+headers:
+  Content-Type: application/json
+
+endpoint: http://localhost:8080/api/movies/file/search
+
+method: GET
+
+params: 
+  title
+  year
+  genre
+
+or
+
 http://localhost:8080/api/movies/file/search?year=1996&genre=Drama&title=Arr
 ```
 - Example response:
