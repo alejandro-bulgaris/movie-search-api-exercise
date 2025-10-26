@@ -1,14 +1,14 @@
 # Movie Search REST API Exercise 
 
-## Install and Run Project on Windows
+## Install and Run Spring Boot Project on Windows
 
 ### Install Windows Subsystem Linux (WSL 2)
 
-- Open `powershell` as admin and run the below command
+- Open `PowerShell` as admin and run the below command
 ```
 wsl --install
 ```
-- Restart your PC and go back to `powershell` and run the below command to make sure `WSL 2` has been installed correctly:
+- Restart your PC and go back to `PowerShell` and run the below command to make sure `WSL 2` has been installed correctly:
 ```
 wsl -l -v
 ```
@@ -27,14 +27,14 @@ wsl -l -v
 
 ### Install openjdk-17 in WSL 2 (ubuntu)
 
-- Go back to `powershell` and run `WSL 2` using the below command:
+- Go back to `PowerShell` and run `WSL 2` using the below command:
 ```
 wsl
 ```
 - `WSL 2` will ask to set a root password the first time it's run
 - After setting root password you should see bash shell home dir
 ```
-youruser@LAPTOP-NNNNN:/mnt/c/Users/youruser/
+youruser@YOURPCNAME:/mnt/c/Users/youruser/
 ```
 - Note that from this point onwards all the command line commands should be done in `WSL 2` bash shell
 - Run the below commands to install openjdk-17
@@ -68,7 +68,7 @@ source ~/.bashrc
 git clone https://github.com/alejandro-bulgaris/movie-search-api-exercise.git
 ```
 - The folder structure of `movie-search-api-exercise` project should be as below:
-  - The `demo` folder is a Spring Boot `REST API` with the features requested
+  - The `demo` folder is a `Spring Boot` `REST API` with the features requested
   - The `angular` folder is the add-on Angular Single Page Application
 ```
 movie-search-api-exercise/
@@ -76,7 +76,8 @@ movie-search-api-exercise/
 │   ├── compose.yaml
 │   └── src
 ├── angular/
-│   └── ...
+│   └── movie-demo-project
+│         └── src
 ├── MovieSearchDemo_BrunoCollection.json
 ├── .editorconfig
 ├── .gitignore
@@ -164,5 +165,44 @@ http://localhost:8080/api/movies/file/search?year=1996&genre=Drama&title=Arr
     "thumbnail_height": 393
   }
 ]
+```
+
+## Install and Run Angular project on WSL 2
+- You may need to install latest `Nodejs` LTS
+- You may need to install latest `Angular CLI`
+
+### Install latest Nodejs LTS
+- First install `nvm`
+```
+sudo apt update
+sudo apt upgrade -y
+sudo apt install curl build-essential libssl-dev -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash
+```
+- Close and reopen your terminal
+```
+nvm install --lts
+nvm use --lts
+```
+- Verify `Nodejs` has been installed correctly
+```
+node -v
+npm -v
+```
+- `Nodejs` version `v22.21.0`
+- `npm` version `10.9.4`
+
+### Install latest Angular CLI and run Angular app
+```
+cd movie-search-api-exercise/angular
+npm install -g @angular/cli
+ng serve
+```
+
+### Navigate to localhost:4200
+- This will bring a basic single page angular app with the features requested
+- Check that the angular app is running in below url
+```
+http://localhost:4200
 ```
 
